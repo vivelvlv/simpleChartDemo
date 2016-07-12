@@ -1,0 +1,38 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:1.2.3'
+    }
+}
+apply plugin: 'com.android.application'
+
+repositories {
+    mavenCentral()
+}
+
+android {
+    compileSdkVersion 21
+    buildToolsVersion "22.0.1"
+
+    defaultConfig {
+        minSdkVersion 11
+        targetSdkVersion 18
+    }
+    buildTypes {
+        release {
+            proguardFile getDefaultProguardFile('proguard-android-optimize.txt')
+        }
+    }
+    productFlavors {
+        defaultFlavor {
+            proguardFile 'proguard-rules.txt'
+        }
+    }
+}
+
+dependencies {
+    compile files('libs/android-support-v4.jar')
+    compile project(':AndroidCharts')
+}
